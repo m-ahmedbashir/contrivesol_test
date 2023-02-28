@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductItem from "../ProductItem/ProductItem";
 import Header from "../Header/Header";
+import toast, { Toaster } from "react-hot-toast";
 const Products = () => {
   // state hooks
   const [products, setProducts] = useState([]);
@@ -17,6 +18,9 @@ const Products = () => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error(
+          "Some error occured while fetching data. Please try again later"
+        );
       });
   }, []);
 
@@ -37,6 +41,7 @@ const Products = () => {
             </div>
           ))}
       </div>
+      <Toaster />
     </div>
   );
 };

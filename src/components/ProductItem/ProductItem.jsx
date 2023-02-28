@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
-
+import toast from "react-hot-toast";
 const ProductItem = ({ id, title, price }) => {
   // cart context
   const { addItem, cart } = useContext(CartContext);
@@ -9,7 +9,7 @@ const ProductItem = ({ id, title, price }) => {
   const handleAddCart = ({ id, title, price }) => {
     const quantity = 1;
     addItem({ id, title, price, quantity });
-    console.log(cart);
+    toast.success("Item Added To Cart");
   };
   return (
     <div className="card">
